@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import use from 'vue-use'
 import App from './App.vue'
-import isloading, { next } from '../src'
+import isloading, { next, is } from '../src'
 
 Vue.config.productionTip = false
 
@@ -15,37 +15,33 @@ const { store } = use(Vue, {
           state: {
             aa: 'aa'
           },
-          mutations: {
-            testM () {}
+          getters: {
+            $is: is
           },
           actions: {
-            test0 () {
-              next(arguments)
-              console.log('---------- test1 done ----------')
+            test7 () {
+              next.apply(this, arguments)
             },
             test1 () {
-              next(arguments)
-              console.log('---------- test1 done ----------')
+              next.apply(this, arguments)
             },
             test3 ({ dispatch }, payload) {
               dispatch('testX')
               dispatch('testXS')
-              next(arguments)
-              console.log('---------- test3 done ----------')
+              next.apply(this, arguments)
             },
             test6 () {
-              next(arguments)
-              setTimeout(() => console.log('---------- test6 done ----------'), 2000)
+              setTimeout(() => {
+                next.apply(this, arguments)
+              }, 2000)
             },
             testX ({ state }, payload) {
-              next(arguments)
-              console.log(payload)
-              console.log('---------- testX done ----------')
+              next.apply(this, arguments)
             },
             testXS ({ state }, payload) {
-              next(arguments)
-              console.log(payload)
-              setTimeout(() => console.log('---------- testXS done ----------'), 3000)
+              setTimeout(() => {
+                next.apply(this, arguments)
+              }, 3000)
             }
           }
         },
@@ -55,16 +51,17 @@ const { store } = use(Vue, {
           },
           actions: {
             test2 () {
-              next(arguments)
-              console.log('---------- test2 done ----------')
+              next.apply(this, arguments)
             },
             test4 () {
-              next(arguments)
-              setTimeout(() => console.log('---------- test4 done ----------'), 1000)
+              setTimeout(() => {
+                next.apply(this, arguments)
+              }, 1000)
             },
             test5 () {
-              next(arguments)
-              setTimeout(() => console.log('---------- test5 done ----------'), 1000)
+              setTimeout(() => {
+                next.apply(this, arguments)
+              }, 1000)
             }
           }
         }

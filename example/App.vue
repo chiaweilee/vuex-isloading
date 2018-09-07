@@ -1,6 +1,10 @@
 <template>
   <div>
-    loading
+    <div>Any loading: {{ $store.getters.$is.anyLoading() }}</div>
+    <template v-for="i in 7">
+      <div :key="i">Test {{ i }}: {{ $store.getters.$is.loading(`test${i}`) }}</div>
+    </template>
+    <div>Loadings: {{ $store.getters.$is.loadings() }}</div>
   </div>
 </template>
 
@@ -12,14 +16,13 @@ export default {
   methods: {
     test () {
       const dispatch = this.$store.dispatch
-      dispatch('test0')
       dispatch('test1')
       dispatch('test2')
       dispatch('test3')
       dispatch('test4')
       dispatch('test5')
       dispatch('test6')
-      this.$store.commit('testM')
+      dispatch('test7')
     }
   }
 }
