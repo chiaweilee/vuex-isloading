@@ -1,4 +1,7 @@
 # Vuex-IsLoading
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/chiaweilee/vuex-isloading.svg)](https://greenkeeper.io/)
+
 ---
 
 ## Install
